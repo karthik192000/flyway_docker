@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  flyway-public:
+    image: flyway/flyway:latest
+    container_name: flyway_public
+    environment:
+      - FLYWAY_URL=jdbc:postgresql://host.docker.internal:5432/postgres
+      - FLYWAY_USER=postgres
+      - FLYWAY_PASSWORD=admin@123
+      - FLYWAY_SCHEMAS=public
+      - FLYWAY_TABLE=flyway_public_history
+    command: migrate
+    volumes:
+      - .:/flyway/sql   
