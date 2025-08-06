@@ -7,7 +7,7 @@ services:
     environment:
       - FLYWAY_SCHEMAS=products
       - FLYWAY_TABLE=flyway_products_history
-    command: migrate
+    command: migrate tail -f /dev/null
     volumes:
       - ./flyway/sql/products:/flyway/sql
       - ./conf:/flyway/conf
@@ -17,7 +17,7 @@ services:
     environment:
       - FLYWAY_SCHEMAS=public
       - FLYWAY_TABLE=flyway_public_history
-    command: migrate
+    command: migrate tail -f /dev/null
     volumes:
       - ./flyway/sql/public:/flyway/sql    
       - ./conf:/flyway/conf
