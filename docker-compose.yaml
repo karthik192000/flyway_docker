@@ -4,20 +4,22 @@ services:
   flyway-products:
     image: flyway/flyway:latest
     container_name: flyway_products
+    entrypoint: ["sh", "-c", "tail -f /dev/null"]
     environment:
       - FLYWAY_SCHEMAS=products
       - FLYWAY_TABLE=flyway_products_history
-    command: migrate tail -f /dev/null
+    # command: migrate tail -f /dev/null
     volumes:
       - ./flyway/sql/products:/flyway/sql
       - ./conf:/flyway/conf
   flyway-public:
     image: flyway/flyway:latest
     container_name: flyway_public
+    entrypoint: ["sh", "-c", "tail -f /dev/null"]
     environment:
       - FLYWAY_SCHEMAS=public
       - FLYWAY_TABLE=flyway_public_history
-    command: migrate tail -f /dev/null
+    # command: migrate tail -f /dev/null
     volumes:
       - ./flyway/sql/public:/flyway/sql    
       - ./conf:/flyway/conf
