@@ -4,23 +4,25 @@ services:
   flyway-products:
     image: flyway/flyway:latest
     container_name: flyway_products
+    entrypoint: ["sh", "-c", "tail -f /dev/null"]
     environment:
       - FLYWAY_SCHEMAS=products
       - FLYWAY_TABLE=flyway_products_history
       - FLYWAY_LOCATIONS=filesystem:/mnt/${WORKSPACE}/flyway/sql/products
       - FLYWAY_CONFIFG_FILES=/mnt/${WORKSPACE}/conf/flyway.conf
-    command: migrate
+    command: migrate tail -f /dev/null
     volumes:
       - jenkins-workspaces:/mnt/${WORKSPACE}
   flyway-public:
     image: flyway/flyway:latest
     container_name: flyway_public
+    entrypoint: ["sh", "-c", "tail -f /dev/null"]
     environment:
       - FLYWAY_SCHEMAS=public
       - FLYWAY_TABLE=flyway_public_history
       - FLYWAY_LOCATIONS=filesystem:/mnt/${WORKSPACE}/flyway/sql/public
       - FLYWAY_CONFIFG_FILES=/mnt/${WORKSPACE}/conf/flyway.conf
-    command: migrate
+    command: migrate tail -f /dev/null
     volumes:
       - jenkins-workspaces:/mnt/${WORKSPACE}
 
