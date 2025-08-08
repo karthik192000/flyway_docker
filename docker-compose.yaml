@@ -8,7 +8,7 @@ services:
       - FLYWAY_SCHEMAS=products
       - FLYWAY_TABLE=flyway_products_history
       - FLYWAY_LOCATIONS=filesystem:/mnt/${WORKSPACE}/flyway/sql/products
-      - FLYWAY_CONFIFG_FILES=/mnt/${WORKSPACE}/flyway/conf/flyway.conf
+      - FLYWAY_CONFIFG_FILES=/mnt/${WORKSPACE}/conf/flyway.conf
     command: migrate
     volumes:
       - jenkins-workspaces:/mnt/${WORKSPACE}
@@ -19,7 +19,7 @@ services:
       - FLYWAY_SCHEMAS=public
       - FLYWAY_TABLE=flyway_public_history
       - FLYWAY_LOCATIONS=filesystem:/mnt/${WORKSPACE}/flyway/sql/public
-      - FLYWAY_CONFIFG_FILES=/mnt/${WORKSPACE}/flyway/conf/flyway.conf
+      - FLYWAY_CONFIFG_FILES=/mnt/${WORKSPACE}/conf/flyway.conf
     command: migrate
     volumes:
       - jenkins-workspaces:/mnt/${WORKSPACE}
