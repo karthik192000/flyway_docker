@@ -26,3 +26,5 @@ services:
 
 volumes:
   jenkins-workspaces:
+    external: true
+    name: jenkins-workspaces
