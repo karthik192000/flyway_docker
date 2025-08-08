@@ -23,3 +23,6 @@ services:
     command: migrate
     volumes:
       - jenkins-workspaces:/mnt/${WORKSPACE}
+
+volumes:
+  jenkins-workspaces:
