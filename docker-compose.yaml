@@ -7,17 +7,19 @@ services:
     environment:
       - FLYWAY_SCHEMAS=products
       - FLYWAY_TABLE=flyway_products_history
+      - FLYWAY_LOCATIONS=filesystem:/mnt/${WORKSPACE}/flyway/sql/products
+      - FLYWAY_CONFIFG_FILES=/mnt/${WORKSPACE}/flyway/conf/flyway.conf
     command: migrate
     volumes:
-      - ${WORKSPACE}/flyway/sql/products:/flyway/sql
-      - ${WORKSPACE}/conf:/flyway/conf
+      - jenkins-workspaces:/mnt/${WORKSPACE}
   flyway-public:
     image: flyway/flyway:latest
     container_name: flyway_public
     environment:
       - FLYWAY_SCHEMAS=public
       - FLYWAY_TABLE=flyway_public_history
+      - FLYWAY_LOCATIONS=filesystem:/mnt/${WORKSPACE}/flyway/sql/public
+      - FLYWAY_CONFIFG_FILES=/mnt/${WORKSPACE}/flyway/conf/flyway.conf
     command: migrate
     volumes:
-      - ${WORKSPACE}/flyway/sql/public:/flyway/sql    
-      - ${WORKSPACE}/conf:/flyway/conf
+      - jenkins-workspaces:/mnt/${WORKSPACE}
