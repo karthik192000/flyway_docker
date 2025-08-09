@@ -8,10 +8,11 @@ services:
       - FLYWAY_SCHEMAS=products
       - FLYWAY_TABLE=flyway_products_history
       - FLYWAY_LOCATIONS=filesystem:/mnt/${FLYWAY_WORKDIR}/flyway/sql/products
-      - FLYWAY_CONFIG_FILES=/mnt/${FLYWAY_WORKDIR}/conf/flyway.conf
-    command: migrate
+    command: -url=${FLYWAY_DB_URL} -user=${FLYWAY_DB_USERNAME} -password=${FLYWAY_DB_PASSWORD} migrate
     volumes:
       - jenkins-workspaces:/mnt
+    env_file:
+      - ./mnt/${FLYWAY_WORKDIR}/flyway.env  
   flyway-public:
     image: flyway/flyway:latest
     container_name: flyway_public
@@ -19,10 +20,11 @@ services:
       - FLYWAY_SCHEMAS=public
       - FLYWAY_TABLE=flyway_public_history
       - FLYWAY_LOCATIONS=filesystem:/mnt/${FLYWAY_WORKDIR}/flyway/sql/public
-      - FLYWAY_CONFIG_FILES=/mnt/${FLYWAY_WORKDIR}/conf/flyway.conf
-    command: migrate
+    command: -url=${FLYWAY_DB_URL} -user=${FLYWAY_DB_USERNAME} -password=${FLYWAY_DB_PASSWORD} migrate
     volumes:
       - jenkins-workspaces:/mnt
+    env_file:
+      - ./mnt/${FLYWAY_WORKDIR}/flyway.env  
 
 volumes:
   jenkins-workspaces:
