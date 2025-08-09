@@ -12,7 +12,7 @@ services:
     volumes:
       - jenkins-workspaces:/mnt
     env_file:
-      - ./mnt/${FLYWAY_WORKDIR}/flyway.env  
+      - /mnt/${FLYWAY_WORKDIR}/flyway.env  
   flyway-public:
     image: flyway/flyway:latest
     container_name: flyway_public
@@ -24,7 +24,7 @@ services:
     volumes:
       - jenkins-workspaces:/mnt
     env_file:
-      - ./mnt/${FLYWAY_WORKDIR}/flyway.env  
+      - /mnt/${FLYWAY_WORKDIR}/flyway.env  
 
 volumes:
   jenkins-workspaces:
