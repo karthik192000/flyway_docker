@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   flyway-products:
-    image: flyway/flyway:latest
+    image: flyway/flyway:11.11.0-alpine
     container_name: flyway_products
     environment:
       - FLYWAY_SCHEMAS=products
@@ -12,7 +12,7 @@ services:
     volumes:
       - jenkins-workspaces:/mnt
   flyway-public:
-    image: flyway/flyway:latest
+    image: flyway/flyway:11.11.0-alpine
     container_name: flyway_public
     environment:
       - FLYWAY_SCHEMAS=public
