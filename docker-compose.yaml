@@ -11,8 +11,6 @@ services:
     command: -url=${FLYWAY_DB_URL} -user=${FLYWAY_DB_USERNAME} -password=${FLYWAY_DB_PASSWORD} migrate
     volumes:
       - jenkins-workspaces:/mnt
-    env_file:
-      - /mnt/${FLYWAY_WORKDIR}/flyway.env  
   flyway-public:
     image: flyway/flyway:latest
     container_name: flyway_public
@@ -23,8 +21,6 @@ services:
     command: -url=${FLYWAY_DB_URL} -user=${FLYWAY_DB_USERNAME} -password=${FLYWAY_DB_PASSWORD} migrate
     volumes:
       - jenkins-workspaces:/mnt
-    env_file:
-      - /mnt/${FLYWAY_WORKDIR}/flyway.env  
 
 volumes:
   jenkins-workspaces:
